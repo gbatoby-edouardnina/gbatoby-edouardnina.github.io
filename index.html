@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script>/* thème mémorisé appliqué avant l'affichage pour éviter un flash */
+document.documentElement.className='js';try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <title>Gbatoby Edouard Nina · Réseau, Système et Formation</title>
 <meta name="description" content="Portfolio de Gbatoby Edouard Nina, administrateur réseau et système et formateur : MikroTik, Cisco CCNA, FortiGate, Red Hat, Windows Server. Expériences, projets et formations.">
 <meta property="og:title" content="Gbatoby Edouard Nina · Réseau, Système et Formation">
@@ -12,11 +14,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
 </head>
 <body>
+<a class="skip" href="#top">Aller au contenu</a>
 <header class="nav">
-  <a class="logo" href="#top">E<span>N</span></a>
-  <nav>
+  <a class="logo" href="#top" aria-label="Accueil">E<span>N</span></a>
+  <nav id="menu" aria-label="Navigation principale">
     <a href="#apropos">À propos</a>
     <a href="#competences">Compétences</a>
     <a href="#experiences">Expériences</a>
@@ -25,13 +29,23 @@
     <a href="#blog">Retours d'expérience</a>
     <a href="#contact" class="btn-s">Contact</a>
   </nav>
+  <div class="nav-tools">
+    <button type="button" class="icon-btn theme-toggle" aria-label="Activer le mode sombre" hidden>
+      <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+    </button>
+    <button type="button" class="icon-btn burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu" hidden>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
   <!-- ======================== ACCUEIL ======================== -->
   <section class="hero">
     <div class="wrap">
-      <p class="kicker">ADMINISTRATEUR RÉSEAU ET SYSTÈMES JUNIOR · SUPPORT N1/N2 · FORMATEUR</p>
+      <!-- Texte animé : les phrases tapées sont dans data-phrases (séparées par |). Le texte d'origine reste lu par Google et les lecteurs d'écran. -->
+      <p class="kicker" data-phrases="ADMINISTRATEUR RÉSEAU ET SYSTÈMES|SUPPORT N1/N2|FORMATEUR CCNA 200-301|FORTIGATE NSE 4|MIKROTIK · RED HAT · WINDOWS SERVER">ADMINISTRATEUR RÉSEAU ET SYSTÈMES JUNIOR · SUPPORT N1/N2 · FORMATEUR</p>
       <h1>Gbatoby Edouard <span>Nina</span></h1>
       <p class="lead">Je conçois, sécurise et dépanne des réseaux d'entreprise, et je forme les techniciens qui les feront tourner demain. Ici, je partage mes projets et ce que le terrain m'a appris.</p>
       <div class="cta">
@@ -40,9 +54,9 @@
         <a class="btn ghost" href="#contact">Me contacter</a>
       </div>
       <ul class="stats">
-        <li><b>6+</b><span>formations et e-books publiés</span></li>
-        <li><b>500+</b><span>labs pratiques rédigés</span></li>
-        <li><b>5</b><span>domaines : réseau, sécurité, Linux, Windows, VoIP</span></li>
+        <li><b data-count="6" data-suffix="+">6+</b><span>formations et e-books publiés</span></li>
+        <li><b data-count="500" data-suffix="+">500+</b><span>labs pratiques rédigés</span></li>
+        <li><b data-count="5">5</b><span>domaines : réseau, sécurité, Linux, Windows, VoIP</span></li>
       </ul>
     </div>
   </section>
@@ -155,32 +169,32 @@
     <h2><span>04</span> Projets techniques et laboratoires</h2>
     <p class="intro">Une pratique régulière en laboratoire pour consolider le réseau, les systèmes et la sécurité.</p>
     <div class="grid2">
-      <article class="card post">
+      <article class="card post" data-cat="securite">
         <time>Sécurité périmétrique</time>
         <h3>FortiGate et Active Directory (FSSO)</h3>
         <p>Intégration d'un FortiGate avec un annuaire Windows Server (LDAP) et configuration du Fortinet Single Sign-On pour un contrôle d'accès transparent basé sur l'identité.</p>
       </article>
-      <article class="card post">
+      <article class="card post" data-cat="reseau">
         <time>Routage</time>
         <h3>OSPF multi-zones avec redistribution</h3>
         <p>Topologie OSPF multi-aires avec redistribution RIP et EIGRP, complétée par des services DHCP et DNS pour l'adressage et la résolution de noms.</p>
       </article>
-      <article class="card post">
+      <article class="card post" data-cat="reseau">
         <time>MikroTik</time>
         <h3>Routeur MikroTik RouterOS 7 virtualisé</h3>
         <p>Routeur CHR sous VirtualBox avec VLAN, pare-feu, double opérateur, Hotspot, PPPoE et VPN WireGuard, administré avec Winbox 4.</p>
       </article>
-      <article class="card post">
+      <article class="card post" data-cat="systemes">
         <time>Systèmes</time>
         <h3>Administration Windows / Linux en LAN/WAN</h3>
         <p>Déploiement de serveurs Windows Server et Linux, surveillance des performances, pare-feu et VPN pour sécuriser les connexions distantes.</p>
       </article>
-      <article class="card post">
+      <article class="card post" data-cat="voip">
         <time>Téléphonie IP</time>
         <h3>Asterisk et IssabelPBX sous Linux</h3>
         <p>Installation et configuration de la téléphonie IP sous Ubuntu, avec un annuaire LDAP pour l'authentification des utilisateurs.</p>
       </article>
-      <article class="card post">
+      <article class="card post" data-cat="support">
         <time>Gestion de parc</time>
         <h3>GLPI</h3>
         <p>Suivi des incidents et des demandes de support via GLPI, et accompagnement des utilisateurs pour les rendre autonomes sur l'outil.</p>
@@ -193,37 +207,37 @@
     <h2><span>05</span> Réalisations</h2>
     <p class="intro">Formations et ouvrages que j'ai conçus de A à Z : contenu, labs, mise en page et diffusion.</p>
     <div class="grid3">
-      <article class="card proj">
+      <article class="card proj" data-cat="reseau">
         <div class="pt">MikroTik</div>
         <h3>Maîtriser MikroTik RouterOS 7</h3>
         <p>E-book de 125 pages, 20 chapitres, 35 labs corrigés et 25 captures Winbox réelles : pare-feu, VLAN, double opérateur, Hotspot, PPPoE, WireGuard, projet final.</p>
         <span class="badge new">Nouveau · 2026</span>
       </article>
-      <article class="card proj">
+      <article class="card proj" data-cat="securite">
         <div class="pt">Fortinet</div>
         <h3>Maîtriser FortiGate NSE 4</h3>
         <p>Le programme NSE 4 du pare-feu à l'entreprise, avec 100 labs d'entreprise, un projet final corrigé et un examen blanc.</p>
         <span class="badge">303 pages · 100 labs</span>
       </article>
-      <article class="card proj">
+      <article class="card proj" data-cat="systemes">
         <div class="pt">Red Hat</div>
         <h3>Maîtriser Red Hat RHEL 10</h3>
         <p>Préparation au RHCSA sur RHEL 10, avec 150 labs d'entreprise pour pratiquer l'administration Linux.</p>
         <span class="badge">150 labs</span>
       </article>
-      <article class="card proj">
+      <article class="card proj" data-cat="reseau">
         <div class="pt">Cisco</div>
         <h3>Masterclass CCNA 200-301</h3>
         <p>Formation complète CCNA : supports, topologies d'entraînement, quiz et affiches de révision.</p>
         <span class="badge">Formation complète</span>
       </article>
-      <article class="card proj">
+      <article class="card proj" data-cat="reseau">
         <div class="pt">Réseau</div>
         <h3>Devenir technicien réseau</h3>
         <p>E-book d'initiation avec 200 TP et un projet de configuration complet (LabNet).</p>
         <span class="badge">200 TP</span>
       </article>
-      <article class="card proj">
+      <article class="card proj" data-cat="systemes securite voip">
         <div class="pt">Système</div>
         <h3>Kits Admin Système, Sécurité et VoIP</h3>
         <p>Kits pour administrateurs : Windows Server 2025, Debian 13, sécurité réseau et supervision, VoIP et messagerie d'entreprise.</p>
@@ -274,12 +288,50 @@
         <a class="btn ghost" href="CV_Gbatoby_Edouard_Nina.pdf" target="_blank" rel="noopener">CV (PDF)</a>
       </div>
     </div>
+
+    <!-- Formulaire : pas de serveur. Le message est vérifié dans le navigateur puis ouvert dans la messagerie du visiteur (mailto). -->
+    <form class="card cform" id="cform" action="mailto:ninascrush01@gmail.com" method="post" enctype="text/plain" novalidate>
+      <h3>Ou laissez-moi un message</h3>
+      <div class="frow">
+        <div class="field">
+          <label for="f-nom">Nom</label>
+          <input id="f-nom" name="nom" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="e-nom">
+          <p class="err" id="e-nom" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="f-mail">E-mail</label>
+          <input id="f-mail" name="email" type="email" autocomplete="email" required maxlength="120" aria-describedby="e-mail">
+          <p class="err" id="e-mail" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-objet">Objet</label>
+        <select id="f-objet" name="objet" required aria-describedby="e-objet">
+          <option value="">Choisissez…</option>
+          <option>Projet réseau ou sécurité</option>
+          <option>Proposition de poste</option>
+          <option>Formation pour mon équipe</option>
+          <option>Autre demande</option>
+        </select>
+        <p class="err" id="e-objet" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" name="message" rows="5" required minlength="20" maxlength="2000" aria-describedby="e-msg c-msg"></textarea>
+        <p class="hint" id="c-msg"><span class="count">0</span> / 2000 caractères · 20 minimum</p>
+        <p class="err" id="e-msg" aria-live="polite"></p>
+      </div>
+      <button class="btn" type="submit">Préparer l'e-mail</button>
+      <p class="fstatus" role="status"></p>
+    </form>
   </section>
 </main>
 
 <footer class="wrap foot">
   <p>© <span id="y">2026</span> Gbatoby Edouard Nina · Réseau, Système et Formation</p>
 </footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<a class="totop" href="#top" aria-label="Retour en haut de la page">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 15l6-6 6 6"/></svg>
+</a>
 </body>
 </html>
